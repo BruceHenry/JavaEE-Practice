@@ -9,7 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<p>Welcome ${sessionScope.USER_IN_SESSION.name}</p>
+<p>Welcome ${sessionScope.USER_IN_SESSION.name}<a href="/login.jsp">Logout</a></p>
+
 	<table>
 		<tr>
 			<th>Name</th>

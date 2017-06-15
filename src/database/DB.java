@@ -23,6 +23,12 @@ public class DB extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html;charset=utf-8");
+		//Redirect to login
+		if(req.getSession().getAttribute("USER_IN_SESSION")==null){
+			resp.sendRedirect("/login.jsp");
+			return;
+		}
+		//Login user
 		Statement stmt = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");

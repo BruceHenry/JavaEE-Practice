@@ -7,12 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% session.invalidate(); %>
-<p>${requestScope.errorMsg}</p>
-	<form action="${PageContext.request.contextPath }/login" method="post">
-		<input type="text" name="name" required placeholder="username"/>
-		<input type="text" name="password" required placeholder="password"/>
-		<input type="submit" value="Login"/>
+	<form action="/cart?cmd=save" method="post">
+		<select name="name">
+			<option>laptop</option>
+			<option>keyboard</option>
+			<option>mouse</option>
+		</select>
+		Quantity:<input type="number" name="num" min="1" required><br />
+		<input type="submit" value="Buy">
 	</form>
 
 </body>

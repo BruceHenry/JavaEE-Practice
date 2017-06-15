@@ -27,6 +27,7 @@ public class LoginServlet extends HttpServlet {
 		if(user==null){
 			req.setAttribute("errorMsg", "Username/Password is wrong");
 			req.getRequestDispatcher("/login.jsp").forward(req, resp);
+			System.out.println("Fail in login!");
 			return;
 		}
 		req.getSession().setAttribute("USER_IN_SESSION", user);
