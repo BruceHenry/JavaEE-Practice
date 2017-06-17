@@ -7,13 +7,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% session.invalidate(); %>
-<p>${requestScope.errorMsg}</p>
+	<%
+		//session.invalidate();
+	%>
+	<p style="color: red;">${requestScope.errorMsg}</p>
 	<form action="${PageContext.request.contextPath }/login" method="post">
-		<input type="text" name="name" required placeholder="username"/>
-		<input type="text" name="password" required placeholder="password"/>
-		<input type="submit" value="Login"/>
+		<input type="hidden" name="token" value="${token}"/> <input
+			type="text" name="name" required placeholder="username" /><br /> <input
+			type="text" name="password" required placeholder="password" /><br />
+		<input type="text" name="randomcode" size="5" maxlength="5" required />
+		<img id="randomcodeIMG" src="/randomcode" title="Another One"
+			onclick="change();" style="cursor: pointer;" /><br /> <input
+			type="submit" value="Login" />
 	</form>
+
+	<script type="text/javascript">
+		function change() {
+			var img = document.getElementById("randomcodeIMG");
+			img.src = "/randomcode?" + new Date().getTime();
+		}
+	</script>
 
 </body>
 </html>

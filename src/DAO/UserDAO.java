@@ -21,7 +21,7 @@ public class UserDAO {
 			Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
 			stmt = conn.createStatement();
 		} catch (Exception e) {
-			System.out.println("Something wrong!");
+			System.out.println("Something wrong in JDBC!");
 		}
 		String sql = String.format("SELECT * FROM user WHERE name = '%s' AND password = '%s'", name, password);
 		System.out.println(sql);

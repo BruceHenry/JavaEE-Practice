@@ -21,7 +21,6 @@ public class RandomCode extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String randomCode = UUID.randomUUID().toString().substring(0, 5);
 		req.getSession().setAttribute("RANDOMCODE_IN_SESSION", randomCode);
-		System.out.println(randomCode);
 		int width = 80;
 		int height = 40;
 		int imageType = BufferedImage.TYPE_INT_RGB;
@@ -41,5 +40,4 @@ public class RandomCode extends HttpServlet {
 		g.dispose();
 		ImageIO.write(image, "jpg", resp.getOutputStream());
 	}
-
 }
