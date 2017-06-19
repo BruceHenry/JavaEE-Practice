@@ -16,12 +16,12 @@ public class Base extends HttpServlet {
 		resp.setContentType("text/html;charset=utf-8");
 		PrintWriter out = resp.getWriter();
 		
-//		req.getRequestDispatcher("/forward/").forward(req, resp);
+		req.getRequestDispatcher("/forward/").forward(req, resp);
 		
 //		resp.sendRedirect("/redirect/");
 //		resp.sendRedirect("https://www.google.com/");
 		
-		req.getRequestDispatcher("/include/").include(req, resp);
+//		req.getRequestDispatcher("/include/").include(req, resp);
 		
 		out.println("Base");
 		System.out.println(req.getContextPath());

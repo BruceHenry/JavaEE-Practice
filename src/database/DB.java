@@ -29,7 +29,7 @@ public class DB extends HttpServlet {
 			return;
 		}
 		//Login user
-		Statement stmt = null;
+		Statement stmt = null; 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
