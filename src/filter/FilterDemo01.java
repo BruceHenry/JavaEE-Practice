@@ -25,14 +25,21 @@ public class FilterDemo01 implements javax.servlet.Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		//First thing to do: convert Servlet to HttpServlet
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
+		
+		//Customized HttpServletRequest (Filter sensitive words)
+		HttpServletRequest wrapperedRequest = new MyHttpServletRequest(req);
+		
 
 		// No encoding in request and encoding in Web.xml
 		if ((req.getCharacterEncoding() == null || forceEncoding) && hasLength(encoding)) {
 			req.setCharacterEncoding(encoding);
 		}
-		chain.doFilter(req, resp);
+		
+        //instead of "chain.doFilter(req,resp);"
+		chain.doFilter(wrapperedRequest, resp);
 
 	}
 
