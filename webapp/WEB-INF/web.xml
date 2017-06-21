@@ -30,10 +30,13 @@
 	<filter-mapping>
 		<filter-name>FilterDemo01</filter-name>
 		<url-pattern>/*</url-pattern>
-		<dispatcher>FORWARD</dispatcher>
-		<dispatcher>REQUEST</dispatcher>
+<!-- 		<dispatcher>FORWARD</dispatcher>-->
+		<dispatcher>REQUEST</dispatcher> 
 	</filter-mapping>
 
+	<listener>
+		<listener-class>listener.ContextListener</listener-class>
+	</listener>
 
 
 

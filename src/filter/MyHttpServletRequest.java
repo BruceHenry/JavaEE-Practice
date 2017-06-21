@@ -20,7 +20,7 @@ public class MyHttpServletRequest extends HttpServletRequestWrapper {
 
 	private String filter(String ret) {
 		// Filter sensitive words
-		return null;
+		return "123";
 	}
 
 }

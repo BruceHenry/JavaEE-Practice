@@ -11,7 +11,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebFilter("/*")
+//@WebFilter("/*")
 public class FilterDemo01 implements javax.servlet.Filter {
 	private String encoding = null;
 	private boolean forceEncoding = false;
@@ -26,20 +26,21 @@ public class FilterDemo01 implements javax.servlet.Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		//First thing to do: convert Servlet to HttpServlet
-		HttpServletRequest req = (HttpServletRequest) request;
-		HttpServletResponse resp = (HttpServletResponse) response;
-		
-		//Customized HttpServletRequest (Filter sensitive words)
-		HttpServletRequest wrapperedRequest = new MyHttpServletRequest(req);
-		
+        HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletResponse resp = (HttpServletResponse) response;
 
-		// No encoding in request and encoding in Web.xml
-		if ((req.getCharacterEncoding() == null || forceEncoding) && hasLength(encoding)) {
-			req.setCharacterEncoding(encoding);
-		}
-		
+        //Customized HttpServletRequest (Filter sensitive words)
+        HttpServletRequest wrapperedRequest = new MyHttpServletRequest(req);
+
+
+        // No encoding in request and encoding in Web.xml
+        if ((req.getCharacterEncoding() == null || forceEncoding) && hasLength(encoding)) {
+            req.setCharacterEncoding(encoding);
+        }
+
         //instead of "chain.doFilter(req,resp);"
-		chain.doFilter(wrapperedRequest, resp);
+        chain.doFilter(wrapperedRequest, resp);
+
 
 	}
 
@@ -49,7 +50,7 @@ public class FilterDemo01 implements javax.servlet.Filter {
 	}
 
 	private boolean hasLength(String str) {
-		return str != null && "".equals(str.trim());
+		return str != null && !"".equals(str.trim());
 	}
 
 }
